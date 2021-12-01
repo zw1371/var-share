@@ -1,0 +1,55 @@
+{
+  	"name": "var-share",
+	"displayName": "var share",
+	"description": "Unify the variable naming style in the project",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.62.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onLanguage:javascript",
+		"onCommand:var.scan"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "var.scan",
+				"title": "scan variable name"
+			}
+		],
+		"menus": {
+			"explorer/context": [{
+				"command": "var.scan",
+				"alt": "",
+				"group": "z_commands"
+			}],
+			"editor/context": [{
+				"command": "var.scan",
+				"when": "resourceExtname == .js",
+				"alt": "",
+				"group": "z_commands"
+			}]
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+        "@types/vscode": "^1.62.0",
+        "@types/glob": "^7.1.4",
+        "@types/mocha": "^9.0.0",
+        "@types/node": "14.x",
+        "eslint": "^7.32.0",
+        "glob": "^7.1.7",
+        "mocha": "^9.1.1",
+        "typescript": "^4.4.3",
+        "@vscode/test-electron": "^1.6.2"
+    }
+
+}
